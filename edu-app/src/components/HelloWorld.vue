@@ -6,18 +6,12 @@
     <ul>
       <li v-for="(name, index) in attending" :key="index">{{ name }}</li>
     </ul>
-    <p>{{ tim }}</p>
   </div>
 </template>
 
-<script>
+<script setup>
 import useEventSpace from "../use/event-space.js"
-export default {
-  setup() {
-    // make it explicit where objects are coming from
-    const { capacity, attending, spacesLeft, increaseCapacity } = useEventSpace()
-    return { capacity, attending, spacesLeft, increaseCapacity }
-  }
-}
+// make it explicit where objects are coming from
+const { capacity, attending, spacesLeft, increaseCapacity } = useEventSpace()
 </script>
 
