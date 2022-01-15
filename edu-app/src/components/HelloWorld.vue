@@ -6,25 +6,27 @@
     <ul>
       <li v-for="(name, index) in attending" :key="index">{{ name }}</li>
     </ul>
+    <p>{{ tim }}</p>
   </div>
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { computed, reactive, toRefs } from 'vue'
 export default {
   setup() {
-    const capacity = ref(3)
-    const attending = ref(['Tim', 'Bob', 'Joe'])
-
-    const spacesLeft = computed(() => {
-      return capacity.value - attending.value.length
+    const myEvent = reactive({
+      capacity: 3,
+      attending: ['Tim', 'Bob', 'Joe'],
+      spacesLeft: computed(() => {
+        return myEvent.capacity - myEvent.attending.length
+      })
     })
 
     function increaseCapacity() {
-      capacity.value++
+      myEvent.capacity++
     }
 
-    return { capacity, attending, spacesLeft, increaseCapacity }
+    return { ...toRefs(myEvent), increaseCapacity }
   }
 }
 </script>
