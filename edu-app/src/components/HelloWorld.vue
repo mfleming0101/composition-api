@@ -3,11 +3,11 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
-  data() {
-    return {
-      capacity: 3
-    }
+  setup() {
+    const capacity = ref(3)
+    return { capacity }
   }
 }
 </script>
